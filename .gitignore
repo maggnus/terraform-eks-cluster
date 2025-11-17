@@ -1,3 +1,10 @@
+# IDE files
+.vscode/
+.idea/
+.cursor/
+.cursorrules
+.cursorignore
+
 # Local .terraform directories
 .terraform/
 
