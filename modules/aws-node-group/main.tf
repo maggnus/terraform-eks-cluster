@@ -4,7 +4,7 @@ resource "aws_eks_node_group" "this" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.cluster_name}-${each.key}"
   node_role_arn   = var.node_role_arn
-  subnet_ids      = length(try(each.value.subnet_ids, [])) > 0 ? each.value.subnet_ids : var.default_subnet_ids
+  subnet_ids      = length(coalesce(try(each.value.subnet_ids, null), [])) > 0 ? each.value.subnet_ids : var.default_subnet_ids
 
   scaling_config {
     desired_size = each.value.desired_size
